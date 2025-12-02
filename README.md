@@ -12,11 +12,11 @@ Ce dépôt documente le déploiement d'un Home Lab réseau complexe, virtualisé
 
 Ce laboratoire est conçu pour valider une **maîtrise complète des architectures réseaux modernes, de la sécurité opérationnelle et des pratiques d'audit technique**.
 
-* **Routage & Segmentation :** Configurer **pfSense A** comme firewall/routeur inter-VLAN principal pour appliquer des politiques de sécurité strictes, assurant le **principe du moindre privilège**.
-* **Virtualisation & Distribution :** Utiliser des conteneurs **LXC** et des **VMs** distribués sur deux hôtes Proxmox (PC A et PC B) pour optimiser les ressources.
-* **Contrôle et Visibilité :** Déployer une stack de monitoring professionnelle (**LibreNMS, Grafana, ntopng**) pour la surveillance proactive du réseau et l'analyse des flux.
-* **Audit et Documentation d'Infrastructure :** Mettre en place **NetBox** pour l'**IPAM** (Gestion des Adresses IP) et l'inventaire, et **Oxidized** pour la sauvegarde automatisée des configurations, des étapes clés de l'audit et de la traçabilité.
-* **Automatisation :** Utiliser **Ansible** pour le déploiement rapide et reproductible des services (IaC - Infrastructure as Code).
+* **Routage & Segmentation :** Configurer pfSense A comme firewall/routeur inter-VLAN principal pour appliquer des politiques de sécurité strictes, assurant le principe du moindre privilège.
+* **Virtualisation & Distribution :** Utiliser des conteneurs LXC et des VMs distribués sur deux hôtes Proxmox (PC A et PC B) pour optimiser les ressources.
+* **Contrôle et Visibilité :** Déployer une stack de monitoring professionnelle (LibreNMS, Grafana, ntopng) pour la surveillance proactive du réseau et l'analyse des flux.
+* **Audit et Documentation d'Infrastructure :** Mettre en place NetBox pour l'IPAM (Gestion des Adresses IP) et l'inventaire, et Oxidized pour la sauvegarde automatisée des configurations, des étapes clés de l'audit et de la traçabilité.
+* **Automatisation :** Utiliser Ansible pour le déploiement rapide et reproductible des services (IaC - Infrastructure as Code).
 
 <p align="center">
 <img width="650" src="https://github.com/tescalon/Advanced-Network-Lab/blob/main/Architecture%20r%C3%A9elle%20r%C3%A9seau.png" alt="Architecture réelle" />
