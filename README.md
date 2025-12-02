@@ -62,3 +62,10 @@ Ce script ne configure pas, il vérifie que les politiques de sécurité sont ap
       command: ufw status
       register: ufw_status
       failed_when: "'inactive' in ufw_status.stdout"
+````
+
+---
+
+## ✅ Compétences Démontrées
+
+**Remplir section compétences**
