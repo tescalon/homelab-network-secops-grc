@@ -11,7 +11,7 @@
 
 ## 📑 Table des Matières (Navigation Rapide)
 
-1.  [Piliers Architecturaux et Sécurité](#1-piliers-architecturaux-et-sécurité)
+1.  [🏢 Piliers Architecturaux et Sécurité](#1-piliers-architecturaux-et-sécurité)
 2.  [Isolation L2 : "Physical Virtual Segregation"](#2-isolation-l2--physical-virtual-segregation)
 3.  [Architecture & Inventaire IPAM](#3-architecture--inventaire-ipam)
 4.  [Ingénierie & Durcissement](#4-ingénierie--durcissement)
@@ -24,7 +24,7 @@
 
 ---
 
-## 1. 🏢  Piliers Architecturaux et Sécurité
+## 1. 🏢 Piliers Architecturaux et Sécurité
 
 Le projet dépasse la simple connectivité pour simuler un environnement critique où chaque flux est justifié. L'approche est celle du **"Security by Design"** : l'architecture privilégie une segmentation stricte et une auditabilité totale.
 
