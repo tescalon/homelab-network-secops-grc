@@ -1,7 +1,7 @@
 # 🛡️ Home Lab Réseau Avancé & Sécurité Opérationnelle
 
 [![Statut du Projet](https://img.shields.io/badge/Statut-Finalis%C3%A9-success)](./docs/ARCHITECTURE.md)
-[![Focus Technique](https://img.shields.io/badge/Focus-GRC%20%7C%20Zero%20Trust%20%7C%20IaC-blue)](./docs/ARCHITECTURE.md)
+[![Focus Technique](https://img.shields.io/badge/Focus-Réseaux%20%7C%20Sécurité&GRC%20%7C%20Zero%20Trust%20%7C%20IaC-blue)](./docs/ARCHITECTURE.md)
 [![Infra](https://img.shields.io/badge/Infra-pfSense%2C%20Proxmox%2C%20WireGuard%2C%20Docker-critical)](./docs/ARCHITECTURE.md)
 [![Ops Stack](https://img.shields.io/badge/Ops-Ansible%2C%20NetBox%2C%20LibreNMS%2C%20Grafana%2C%20ntopng-blueviolet)](./DOCKER_STACK/docker-compose.yml)
 
