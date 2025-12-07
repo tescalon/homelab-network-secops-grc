@@ -188,18 +188,51 @@ Choix technologique : **WireGuard** (vs IPsec/OpenVPN).
 
 ## 8. 📸 Aperçu Visuel & Preuves de Concept
 
-Cette section illustre la mise en œuvre technique des politiques de sécurité et de gouvernance définies dans le DAT.
+Afin de valider l'architecture et les politiques de sécurité clés, voici cinq preuves concrètes de la mise en œuvre de notre Lab.
 
-1.  **Ségrégation Physique Virtuelle (Hyperviseur) :** Configuration Proxmox montrant l'isolation stricte des zones via des ponts Linux distincts.
-    * `docs/images/proxmox_network_segregation.png`
-2.  **Politique de Filtrage "Zero Trust" :** Règles pfSense sur l'interface DMZ. Illustration de la règle **BLOCK** DMZ $\rightarrow$ LAN.
-    * `docs/images/pfsense_dmz_rules.png`
-3.  **Source of Truth (NetBox) :** Inventaire dynamique servant de référence unique.
-    * `docs/images/netbox_inventory.png`
-4.  **Supervision Unifiée (Observabilité) :** Tableau de bord Grafana centralisant les alertes de disponibilité et l'analyse des flux.
-    * `docs/images/grafana_ops_dashboard.png`
-5.  **Automatisation & Audit (IaC) :** Exécution d'un playbook Ansible pour la vérification de conformité.
-    * `docs/images/ansible_audit_output.png`
+#### 1. Preuve Critique du Zero Trust (Isolation L3)
+
+Ceci est la **preuve fondamentale de sécurité**. Elle montre la règle de pare-feu qui **bloque** toute tentative de connexion initiée depuis la DMZ vers le réseau d'administration (LAN HQ).
+
+> **Justification :** Sans cette règle, un attaquant ayant compromis la Stack Docker pourrait se déplacer vers le réseau de gestion.
+
+![Règle BLOCK Critique (DMZ)](docs/images/host_hq/pfsense_zero_trust_block.png)
+
+#### 2. Validation du Routage Inter-Sites (WireGuard S2S)
+
+Le `traceroute` prouve que la connectivité entre le Siège et l'Agence est fonctionnelle et qu'elle passe correctement par la Gateway du tunnel VPN (`10.10.20.2`).
+
+> **Justification :** Valide le tunnel VPN WireGuard et prouve la correction du routage statique complexe (Ingénierie Réseau).
+
+![Traceroute S2S](docs/images/host_hq/validation_traceroute_vpn.png)
+
+#### 3. Hardening et Optimisation Kernel
+
+Preuve d'une correction essentielle en environnement virtualisé : la désactivation de l'Offloading pour garantir l'intégrité des données TCP/UDP et éviter la corruption de paquets.
+
+> **Justification :** Démontre l'expertise dans la gestion des problèmes de performance et d'intégrité de niveau kernel.
+
+![Optimisation Kernel](docs/images/host_hq/pfsense_kernel_optimisation.png)
+
+#### 4. Audit, Supervision et Persistance (GRC)
+
+Preuve que l'ensemble des outils SecOps (NetBox, LibreNMS, Oxidized) est déployé et opérationnel via Docker Compose.
+
+> **Justification :** Valide l'orchestration, l'auditabilité et la disponibilité des services critiques GRC.
+
+![Statut Docker Stack](docs/images/host_hq/docker_stack_status.png)
+
+#### 5. Organisation IaC pour la Conformité
+
+La structure du répertoire du serveur d'administration prouve l'organisation des fichiers pour le déploiement et l'audit (Ansible, Docker, Oxidized).
+
+> **Justification :** Démontre la rigueur dans l'application des principes d'Infrastructure as Code (IaC) et GitOps.
+
+![Organisation IaC](docs/images/architecture/homelab_file_structure.png)
+
+---
+
+> **Pour une analyse complète de l'architecture, de la Matrice de Flux GRC et des 34 preuves visuelles, veuillez consulter tous les documents et les images dans le dossier `docs/`.**
 
 ---
 
