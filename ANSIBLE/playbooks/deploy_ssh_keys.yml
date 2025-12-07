@@ -1,0 +1,30 @@
+---
+- name: 1. Déployer la clé SSH et vérifier les prérequis de sécurité
+  hosts: pfsense_firewalls
+  gather_facts: false 
+  become: false 
+
+  vars:
+    # Chemin local CRITIQUE sur la machine d'exécution Ansible (srv-admin-siege)
+    ssh_public_key_file: "~/.ssh/id_ed25519.pub"
+    
+  tasks:
+    - name: 1.1 Vérifier l'existence de la clé publique localement
+      # S'assure que le fichier clé nécessaire à l'opération est présent sur le contrôleur Ansible
+      local_action: stat path="{{ ssh_public_key_file }}"
+      run_once: true 
+      register: key_file_status
+      failed_when: not key_file_status.stat.exists
+      
+    - name: 1.2 Déployer la Clé Publique (Ed25519) sur le fichier authorized_keys du pfSense
+      # Ce module ajoute la clé publique au fichier ~/.ssh/authorized_keys de l'utilisateur distant
+      ansible.posix.authorized_key:
+        user: "{{ ansible_user }}" # Généralement 'oxidized' ou votre utilisateur de management
+        key: "{{ lookup('file', ssh_public_key_file) }}"
+        state: present
+        comment: Déployé par Ansible pour l'automatisation des clés
+      # Note : L'utilisateur doit déjà exister sur le pfSense (créé via l'interface Web).
+
+    - name: 1.3 Confirmer le déploiement
+      debug:
+        msg: "Clé SSH déployée sur {{ inventory_hostname }}. L'accès par mot de passe peut maintenant être désactivé sur le serveur (durcissement GRC)."
