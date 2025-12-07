@@ -1,0 +1,38 @@
+- name: Audit de Sécurité
+  hosts: all
+  gather_facts: no
+  tasks:
+
+    #TEST 1 : Vérification de la connectivité
+    - name: "TEST 1 : Ping de disponibilité"
+      ping:
+      register: ping_result
+      ignore_errors: yes
+
+    - name: "RESULTAT 1 : Disponibilité"
+      debug:
+        msg: "{{ inventory_hostname }} est VIVANT  ^|^e"
+      when: ping_result is success
+
+    # TEST 2 : Sécurité   SSH (Root Login)
+    - name: "TEST 2 : Vérifier interdiction Root SSH"
+      shell: "grep '^PermitRootLogin' /etc/ssh/sshd_config"
+      register: ssh_check
+      failed_when: false
+      changed_when: false
+
+    - name: "RESULTAT 2 : Conformité   SSH Root"
+      debug:
+        msg: "ALERTE : {{ inventory_hostname }} autorise le Root Login !  ^}^l"
+      when: "'no' not in ssh_check.stdout"
+
+    # TEST 3 : Version du système (Inventaire)
+    - name: "TEST 3 : Récupération Version OS"
+      shell: "uname -sr"
+      register: os_version
+      changed_when: false
+
+    - name: "RESULTAT 3 : Version Système"
+      debug:
+        msg: "OS détecté : {{ os_version.stdout }}"
+
